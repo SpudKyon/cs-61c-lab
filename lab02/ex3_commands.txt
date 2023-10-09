@@ -3,3 +3,38 @@
 # Lines starting with # are comments, feel free to add any to document your commands
 
 # Please add your commands below this line
+
+# Set a breakpoint in our code to jump straight into the the function check_number. Your breakpoint should not be in check_password.
+break check_number
+
+# Run the program. Your code should run until it gets to the breakpoint that we just set.
+run
+
+# Step into check_range.
+n
+s
+
+# Recall that the numbers do not appear until later in the password. Instead of stepping through all of the non-numerical characters at the beginning of password, we can jump straight to the point in the code where the numbers are being compared using a conditional breakpoint. A conditional breakpoint will only stop the program based on a given condition. The first number in the password 0, so we can set the breakpoint when letter is '0'. Break on line 31 if the letter is '0'.
+# We are using the single quote because 0 is a char.
+break 31 if letter == '0'
+
+# Continue executing your code after it stops at a breakpoint.
+continue
+
+# The code has stopped at the conditional breakpoint. To verify this, print letter.
+# It should print 48 '0' which is a decimal number followed by it's corresponding ASCII representation. If you look at an ASCII table, you can see that 48 is the decimal representation of the character 0.
+print letter
+
+# Let's take a look at the return value of check_range. Print is_in_range. The result is false. That's strange. '0' should be in the range.
+print is_in_range
+
+# Let's look at the upper and lower bounds of the range. Print lower.
+print lower
+
+# Print upper.
+print upper
+
+# Ahah! The ASCII representation of lower is \000(the null terminator) and the ASCII representation of upper is \t. It looks like we passed in the numbers 0 and 9 instead of the characters '0' and '9'!
+
+# Quit CGDB. CGDB might ask you if you want to quit, type y (but do not add y to ex3_commands.txt).
+quit
